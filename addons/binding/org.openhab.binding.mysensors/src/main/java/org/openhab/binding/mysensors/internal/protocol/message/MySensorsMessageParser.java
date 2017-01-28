@@ -45,6 +45,32 @@ public class MySensorsMessageParser {
         }
 
     }
+    
+    public static MySensorsMessage parseMQTT(String topic, String message) {
+    	String[] splitMessage = topic.split("/");
+        if (splitMessage.length > 5) {
+
+            MySensorsMessage mysensorsmessage = new MySensorsMessage();
+
+            mysensorsmessage.setNodeId(Integer.parseInt(splitMessage[1]));
+            mysensorsmessage.setChildId(Integer.parseInt(splitMessage[2]));
+            mysensorsmessage.setMsgType(Integer.parseInt(splitMessage[3]));
+            mysensorsmessage.setAck(Integer.parseInt(splitMessage[4]));
+            mysensorsmessage.setSubType(Integer.parseInt(splitMessage[5]));
+            
+            if (message != null) {
+                String msg = message.replaceAll("\\r|\\n", "").trim();
+                mysensorsmessage.setMsg(msg);
+            } else {
+                mysensorsmessage.setMsg("");
+            }
+
+            return mysensorsmessage;
+        } else {
+            return null;
+        }
+
+    }
 
     /**
      * Converts a MySensorsMessage object to a String.

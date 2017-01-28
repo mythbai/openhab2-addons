@@ -7,7 +7,9 @@
  */
 package org.openhab.binding.mysensors.internal.handler;
 
-import static org.openhab.binding.mysensors.MySensorsBindingConstants.*;
+import static org.openhab.binding.mysensors.MySensorsBindingConstants.THING_TYPE_BRIDGE_ETH;
+import static org.openhab.binding.mysensors.MySensorsBindingConstants.THING_TYPE_BRIDGE_MQTT;
+import static org.openhab.binding.mysensors.MySensorsBindingConstants.THING_TYPE_BRIDGE_SER;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -28,6 +30,7 @@ import org.openhab.binding.mysensors.internal.event.MySensorsUpdateListener;
 import org.openhab.binding.mysensors.internal.factory.MySensorsCacheFactory;
 import org.openhab.binding.mysensors.internal.protocol.MySensorsBridgeConnection;
 import org.openhab.binding.mysensors.internal.protocol.ip.MySensorsIpConnection;
+import org.openhab.binding.mysensors.internal.protocol.mqtt.MySensorsMqttConnection;
 import org.openhab.binding.mysensors.internal.protocol.serial.MySensorsSerialConnection;
 import org.openhab.binding.mysensors.internal.sensors.MySensorsDeviceManager;
 import org.openhab.binding.mysensors.internal.sensors.MySensorsNode;
@@ -75,6 +78,8 @@ public class MySensorsBridgeHandler extends BaseBridgeHandler implements MySenso
         } else if (getThing().getThingTypeUID().equals(THING_TYPE_BRIDGE_ETH)) {
             myCon = new MySensorsIpConnection(this, myConfiguration.ipAddress, myConfiguration.tcpPort,
                     myConfiguration.sendDelay);
+        } else if (getThing().getThingTypeUID().equals(THING_TYPE_BRIDGE_MQTT)) {
+        	myCon = new MySensorsMqttConnection(this, myConfiguration.url, myConfiguration.topic);
         } else {
             logger.error("Not recognized bridge: {}", getThing().getThingTypeUID());
         }

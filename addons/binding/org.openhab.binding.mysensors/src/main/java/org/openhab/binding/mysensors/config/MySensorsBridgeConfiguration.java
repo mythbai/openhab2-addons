@@ -22,4 +22,8 @@ public class MySensorsBridgeConfiguration {
     public Boolean imperial; // should nodes send imperial or metric values?
     public Boolean skipStartupCheck; // should the startup check of the bridge at boot skipped?
     public Boolean enableNetworkSanCheck; // network sanity check enabled?
+    public String topic; // MQTT topic to subscribe to
+    public String url; // URL of the MQTT Server
+    public String username; // Username used to connect to the MQTT server
+    public String password; // password used to connect to the MQTT server
 }

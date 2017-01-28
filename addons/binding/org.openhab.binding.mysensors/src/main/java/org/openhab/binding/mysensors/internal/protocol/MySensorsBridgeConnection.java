@@ -28,6 +28,7 @@ import org.openhab.binding.mysensors.internal.event.MySensorsStatusUpdateEvent;
 import org.openhab.binding.mysensors.internal.event.MySensorsUpdateListener;
 import org.openhab.binding.mysensors.internal.handler.MySensorsBridgeHandler;
 import org.openhab.binding.mysensors.internal.protocol.message.MySensorsMessage;
+import org.openhab.binding.mysensors.internal.protocol.mqtt.MySensorsMqttConnection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -264,7 +265,12 @@ public abstract class MySensorsBridgeConnection implements Runnable, MySensorsUp
         synchronized (outboundMessageQueue) {
             try {
                 for (int i = 0; i < copy; i++) {
-                    outboundMessageQueue.put(msg);
+                    // Is it a MQTT gateway?
+                	if(bridgeHandler.getBridgeConfiguration().url.length() > 0) {
+                			((MySensorsMqttConnection) this).sendMessage(msg);
+                	} else {
+                		outboundMessageQueue.put(msg);
+                	}
                 }
             } catch (InterruptedException e) {
                 logger.error("Interrupted message while ruuning");

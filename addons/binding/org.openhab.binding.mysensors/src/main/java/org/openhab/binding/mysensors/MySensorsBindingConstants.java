@@ -36,6 +36,9 @@ public class MySensorsBindingConstants {
     public static final String PARAMETER_SENDDELAY = "sendDelay";
     public static final String PARAMETER_BAUDRATE = "baudRate";
     public static final String PARAMETER_REQUESTACK = "requestack";
+    public static final String PARAMETER_URL = "url";
+    public static final String PARAMETER_USERNAME = "username";
+    public static final String PARAMETER_PASSWORD = "password";
 
     // Message types of the MySensors network
     public static final int MYSENSORS_MSG_TYPE_PRESENTATION = 0;
@@ -235,6 +238,7 @@ public class MySensorsBindingConstants {
     // List of bridges
     public final static ThingTypeUID THING_TYPE_BRIDGE_SER = new ThingTypeUID(BINDING_ID, "bridge-ser");
     public final static ThingTypeUID THING_TYPE_BRIDGE_ETH = new ThingTypeUID(BINDING_ID, "bridge-eth");
+    public final static ThingTypeUID THING_TYPE_BRIDGE_MQTT = new ThingTypeUID(BINDING_ID, "bridge-mqtt");
 
     // List of all Channel ids
     public final static String CHANNEL_HUM = "hum";
@@ -390,7 +394,7 @@ public class MySensorsBindingConstants {
             THING_TYPE_COLOR_SENSOR);
     /** Supported bridges */
     public final static Set<ThingTypeUID> SUPPORTED_BRIDGE_THING_TYPES_UIDS = ImmutableSet.of(THING_TYPE_BRIDGE_SER,
-            THING_TYPE_BRIDGE_ETH);
+            THING_TYPE_BRIDGE_ETH, THING_TYPE_BRIDGE_MQTT);
 
     /** Supported devices (things + bridges) */
     public final static Collection<ThingTypeUID> SUPPORTED_DEVICE_TYPES_UIDS = Lists.newArrayList(THING_TYPE_HUMIDITY,
@@ -402,5 +406,6 @@ public class MySensorsBindingConstants {
             THING_TYPE_TEXT, THING_TYPE_IR_SEND, THING_TYPE_IR_RECEIVE, THING_TYPE_AIR_QUALITY, THING_TYPE_DUST,
             THING_TYPE_COLOR_SENSOR,
             THING_TYPE_BRIDGE_SER,
-            THING_TYPE_BRIDGE_ETH);
+            THING_TYPE_BRIDGE_ETH,
+            THING_TYPE_BRIDGE_MQTT);
 }

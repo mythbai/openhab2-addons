@@ -7,7 +7,11 @@
  */
 package org.openhab.binding.mysensors.internal.factory;
 
-import static org.openhab.binding.mysensors.MySensorsBindingConstants.*;
+import static org.openhab.binding.mysensors.MySensorsBindingConstants.SUPPORTED_DEVICE_TYPES_UIDS;
+import static org.openhab.binding.mysensors.MySensorsBindingConstants.SUPPORTED_THING_TYPES_UIDS;
+import static org.openhab.binding.mysensors.MySensorsBindingConstants.THING_TYPE_BRIDGE_ETH;
+import static org.openhab.binding.mysensors.MySensorsBindingConstants.THING_TYPE_BRIDGE_MQTT;
+import static org.openhab.binding.mysensors.MySensorsBindingConstants.THING_TYPE_BRIDGE_SER;
 
 import java.util.HashMap;
 import java.util.Hashtable;
@@ -54,7 +58,7 @@ public class MySensorsHandlerFactory extends BaseThingHandlerFactory {
             return new MySensorsThingHandler(thing);
         }
 
-        if (thingTypeUID.equals(THING_TYPE_BRIDGE_SER) || thingTypeUID.equals(THING_TYPE_BRIDGE_ETH)) {
+        if (thingTypeUID.equals(THING_TYPE_BRIDGE_SER) || thingTypeUID.equals(THING_TYPE_BRIDGE_ETH) || thingTypeUID.equals(THING_TYPE_BRIDGE_MQTT)) {
             MySensorsBridgeHandler handler = new MySensorsBridgeHandler((Bridge) thing);
             registerDeviceDiscoveryService(handler);
             return handler;
