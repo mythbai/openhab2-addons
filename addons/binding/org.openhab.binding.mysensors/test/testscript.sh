@@ -209,3 +209,10 @@ echo "172;4;1;0;15;1" > $serialPort
 
 # set dust level
 #echo "1;1;1;0;37;66" > $serialPort
+
+# set RGB
+#echo "199;0;1;0;40;ffff05" > $serialPort
+
+# set RGBW
+echo "199;0;1;0;41;15abfe" > $serialPort
+
