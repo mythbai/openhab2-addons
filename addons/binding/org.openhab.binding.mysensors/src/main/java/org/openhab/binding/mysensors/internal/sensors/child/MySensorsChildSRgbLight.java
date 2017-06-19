@@ -12,6 +12,7 @@ import org.openhab.binding.mysensors.internal.exception.NoContentException;
 import org.openhab.binding.mysensors.internal.protocol.message.MySensorsMessage;
 import org.openhab.binding.mysensors.internal.sensors.MySensorsChild;
 import org.openhab.binding.mysensors.internal.sensors.variable.MySensorsVariableVRgb;
+import org.openhab.binding.mysensors.internal.sensors.variable.MySensorsVariableVStatus;
 import org.openhab.binding.mysensors.internal.sensors.variable.MySensorsVariableVWatt;
 
 /**
@@ -28,6 +29,7 @@ public class MySensorsChildSRgbLight extends MySensorsChild {
         super(childId);
         setPresentationCode(MySensorsMessage.MYSENSORS_SUBTYPE_S_RGB_LIGHT);
         try {
+            addVariable(new MySensorsVariableVStatus());
             addVariable(new MySensorsVariableVRgb());
             addVariable(new MySensorsVariableVWatt());
         } catch (NoContentException e) {

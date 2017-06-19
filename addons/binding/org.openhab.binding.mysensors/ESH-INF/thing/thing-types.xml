@@ -2383,14 +2383,14 @@
 		<category>Variable</category>
 	</channel-type>
 	<channel-type id="rgb-channel">
-		<item-type>String</item-type>
-		<label>Text</label>
+		<item-type>Color</item-type>
+		<label>Color</label>
 		<description>MySensors RGB Channel</description>
 		<category>Variable</category>
 	</channel-type>
 	<channel-type id="rgbw-channel">
-        <item-type>String</item-type>
-        <label>Text</label>
+        <item-type>Color</item-type>
+        <label>Color</label>
         <description>MySensors RGBW Channel</description>
         <category>Variable</category>
     </channel-type>

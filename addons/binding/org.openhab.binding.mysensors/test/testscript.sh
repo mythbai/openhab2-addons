@@ -213,6 +213,12 @@ echo "172;4;1;0;15;1" > $serialPort
 # set RGB
 #echo "199;0;1;0;40;ffff05" > $serialPort
 
+# Represent RGBW
+echo "198;0;0;0;27;2.1.1" > $serialPort
+
+# Set RGBW
+echo "198;0;1;0;41;aabbccdd" > $serialPort
+
 # set RGBW
-echo "199;0;1;0;41;15abfe" > $serialPort
+#echo "199;0;1;0;41;15abfe" > $serialPort
 
